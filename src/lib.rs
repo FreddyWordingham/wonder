@@ -28,7 +28,8 @@
     clippy::unwrap_used
 )]
 
-// pub mod meta;
-// pub mod wasm;
+pub mod meta;
+pub mod util;
+pub mod wasm;
 
-// pub use self::{meta::*, wasm::*};
+pub use self::{meta::*, util::*, wasm::*};
