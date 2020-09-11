@@ -2,8 +2,8 @@ import {
     draw_rect
 } from "./draw";
 import {
-    load_symbol_map
-} from "./symbols";
+    load_sprite_map
+} from "./sprites";
 import {
     render
 } from "./render";
@@ -102,29 +102,20 @@ function pause() {
 function tick() {
     console.log("*tick*");
     state.progress(1);
-    render(canvas, state);
+    render(canvas, state, sprite_map);
 }
 
 
 
 /// == START ==
-console.log("Hello world!");
-
+/// -- Initialisation --
+const sprite_map = load_sprite_map();
 const canvas = init_canvas("main_canvas", 800, 500);
-console.log(canvas.width);
-console.log(canvas.height);
 
-canvas.ctx.fillStyle = "green";
-draw_rect(canvas, 0.4, 0.4, 0.2, 0.2);
-
-let state = State.new();
+const state = State.new();
 state.add_player(40, 40);
 for (let i = 0; i < 10; ++i) {
     state.add_monster(4 + i * 7, 20);
 }
 
-// play();
-
-
-let sym_map = load_symbol_map();
-console.log(sym_map);
+play();

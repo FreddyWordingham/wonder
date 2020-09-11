@@ -2,24 +2,21 @@ import {
     memory
 } from "wonder/wonder_bg";
 import {
-    clear_canvas,
-    fill_canvas,
-    draw_circle,
-    draw_rect
+    draw_sprite
 } from "./draw";
 
 
 
 /// == FUNCTIONS ==
 /// -- Control --
-export function render(canvas, state) {
+export function render(canvas, state, sprite_map) {
     canvas.ctx.clearRect(0, 0, canvas.width, canvas.height);
-    render_ents(canvas, state);
+    render_ents(canvas, state, sprite_map);
 }
 
 
 /// -- Components --
-function render_ents(canvas, state) {
+function render_ents(canvas, state, sprite_map) {
     let ent_count = state.update_pos_buff();
 
     const pos_ptr = state.read_pos_buff();
@@ -29,9 +26,9 @@ function render_ents(canvas, state) {
         const x = pos[2 * i];
         const y = pos[(2 * i) + 1];
 
-        canvas.ctx.lineWidth = 2;
-        canvas.ctx.strokeStyle = "black";
-        canvas.ctx.fillStyle = "blue";
-        draw_circle(canvas, x / 80, y / 50, 20);
+        const fx = x / 80.0;
+        const fy = y / 50.0;
+
+        draw_sprite(canvas, sprite_map['p'], fx, fy, 0.05, 0.05);
     }
 }
