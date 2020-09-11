@@ -115,9 +115,9 @@ fn player_input(state: &mut State, ctx: &mut Rltk) {
     match ctx.key {
         None => {}
         Some(key) => match key {
-            VirtualKeyCode::Left | VirtualKeyCode::A => try_move_player(-1, 0, state.ecs_mut()),
+            VirtualKeyCode::Left | VirtualKeyCode::A => try_move_player(1, 0, state.ecs_mut()),
             VirtualKeyCode::Right | VirtualKeyCode::D => try_move_player(1, 0, state.ecs_mut()),
-            VirtualKeyCode::Up | VirtualKeyCode::W => try_move_player(0, -1, state.ecs_mut()),
+            VirtualKeyCode::Up | VirtualKeyCode::W => try_move_player(0, 1, state.ecs_mut()),
             VirtualKeyCode::Down | VirtualKeyCode::S => try_move_player(0, 1, state.ecs_mut()),
             _ => {}
         },
