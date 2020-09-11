@@ -16,4 +16,11 @@ pub struct Position {
 impl Position {
     clone!(x, i32);
     clone!(y, i32);
+
+    /// Construct a new instance.
+    #[inline]
+    #[must_use]
+    pub fn new(x: i32, y: i32) -> Self {
+        Self { x, y }
+    }
 }

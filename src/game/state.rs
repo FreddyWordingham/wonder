@@ -5,7 +5,7 @@ use crate::{
     comp::{Position, Renderable},
 };
 use rltk::{GameState, Rltk};
-use specs::{World, WorldExt};
+use specs::{Builder, World, WorldExt};
 
 /// Universe state information.
 pub struct State {
@@ -25,6 +25,12 @@ impl State {
         ecs.register::<Renderable>();
 
         Self { ecs }
+    }
+
+    /// Add a thing to the world.
+    #[inline]
+    pub fn add_thing(&mut self, pos: Position, rend: Renderable) {
+        self.ecs.create_entity().with(pos).with(rend).build();
     }
 }
 
