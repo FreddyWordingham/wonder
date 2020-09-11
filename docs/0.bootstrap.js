@@ -90,7 +90,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"load_sprite_map\", function() { return load_sprite_map; });\n/// == FUNCTIONS ==\n/// -- Loading --\nfunction load_sprite_map() {\n    console.log(\"Loading sprites...\");\n\n    let map = new Map();\n\n    map['p'] = load_img(\"burst\");\n    map['g'] = load_img(\"burst\");\n\n    console.log(\"Sprites loaded.\");\n\n    return map;\n}\n\n\n/// -- Drawing --\n/// Draw a human symbol.\nfunction load_img(name) {\n    let img = new Image();\n    img.onload = function () {\n        console.log(\"Loaded image: \", name);\n    };\n    img.src = './../res/sprites/' + name + '.png';\n\n    return img;\n}\n\n\n//# sourceURL=webpack:///./sprites.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"load_sprite_map\", function() { return load_sprite_map; });\n/// == FUNCTIONS ==\n/// -- Loading --\nfunction load_sprite_map() {\n    console.log(\"Loading sprites...\");\n\n    let map = new Map();\n\n    map['p'] = load_img(\"burst\");\n    map['g'] = load_img(\"burst\");\n\n    console.log(\"Sprites loaded.\");\n\n    return map;\n}\n\n\n/// -- Drawing --\n/// Draw a human symbol.\nfunction load_img(name) {\n    let img = new Image();\n    img.onload = function () {\n        console.log(\"Loaded image: \", name);\n    };\n    img.src = './res/sprites/' + name + '.png';\n\n    return img;\n}\n\n\n//# sourceURL=webpack:///./sprites.js?");
 
 /***/ }),
 
