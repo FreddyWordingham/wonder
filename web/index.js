@@ -16,10 +16,46 @@ import {
 
 
 
-//  == HANDLES ==
+/// == HANDLES ==
 /// -- Forms --
 const top_form = document.getElementById("top_form");
 const bottom_form = document.getElementById("bottom_form");
+
+
+
+/// == GLOBALS ==
+/// -- Time --
+var interval = null;
+
+
+
+/// == LISTENERS ==
+/// -- Buttons --
+/// Check for time button click.
+time_button.addEventListener("click", event => {
+    if (is_paused()) {
+        play();
+    } else {
+        pause();
+    }
+});
+
+
+/// -- Keypress --
+document.body.onkeyup = function (e) {
+    console.log("Registered keypress: ", e.keyCode);
+
+    if (e.keyCode == 32) { // spacebar.
+        if (is_paused()) {
+            play();
+        } else {
+            pause();
+        }
+    } else if (e.keyCode == 27) { // escape.
+        toggle_forms(top_form, bottom_form);
+    } else if (e.keyCode == 82) { // 'r'.
+    }
+}
 
 
 
@@ -42,6 +78,32 @@ function init_canvas(id, width, height) {
 
 
 /// -- Time --
+/// Check if time is paused.
+function is_paused() {
+    return interval === null;
+};
+
+/// Start time.
+function play() {
+    console.log("PLAY");
+    time_button.textContent = "pause";
+    interval = setInterval(tick, 1000);
+};
+
+/// Stop time.
+function pause() {
+    console.log("PAUSE");
+    time_button.textContent = "start";
+    clearInterval(interval);
+    interval = null;
+};
+
+/// Tick forward one iteration.
+function tick() {
+    console.log("*tick*");
+    // state.progress(1);
+    // render_ents(canvas, state);
+}
 
 
 
@@ -56,7 +118,4 @@ canvas.ctx.fillStyle = "green";
 draw_rect(canvas, 0.4, 0.4, 0.2, 0.2);
 
 let state = 0;
-// const interval = setInterval(function () {
-//     // state.progress(1);
-//     render_ents(canvas, state);
-// }, 100);
+// play();
