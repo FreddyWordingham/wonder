@@ -2,6 +2,9 @@ import {
     draw_rect
 } from "./draw";
 import {
+    load_symbol_map
+} from "./symbols";
+import {
     render
 } from "./render";
 import {
@@ -121,3 +124,7 @@ for (let i = 0; i < 10; ++i) {
 }
 
 // play();
+
+
+let sym_map = load_symbol_map();
+console.log(sym_map);
