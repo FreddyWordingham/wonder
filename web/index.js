@@ -118,4 +118,9 @@ canvas.ctx.fillStyle = "green";
 draw_rect(canvas, 0.4, 0.4, 0.2, 0.2);
 
 let state = State.new();
+state.add_player(40, 40);
+for (let i = 0; i < 10; ++i) {
+    state.add_monster(4 + i * 7, 20);
+}
+
 // play();
