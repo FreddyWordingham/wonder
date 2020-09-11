@@ -33,9 +33,4 @@ pub mod meta;
 pub mod util;
 // pub mod wasm;
 
-pub use self::{
-    game::*,
-    meta::*,
-    util::*,
-    // wasm::*
-};
+pub use self::{game::*, meta::*, util::*};

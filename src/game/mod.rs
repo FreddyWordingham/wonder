@@ -2,8 +2,7 @@
 
 pub mod comp;
 pub mod ent;
+pub mod state;
 pub mod sys;
 
-pub use self::comp::*;
-pub use self::ent::*;
-pub use self::sys::*;
+pub use self::{comp::*, ent::*, state::*, sys::*};
