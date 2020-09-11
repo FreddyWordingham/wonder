@@ -1,6 +1,6 @@
 //! Walking travel system.
 
-use crate::comp::*;
+use crate::comp::{LeftMover, Position};
 use specs::{Join, ReadStorage, System, WriteStorage};
 
 #[allow(clippy::module_name_repetitions)]
