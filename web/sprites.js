@@ -21,7 +21,7 @@ function load_img(name) {
     img.onload = function () {
         console.log("Loaded image: ", name);
     };
-    img.src = './master/res/sprites/' + name + '.png';
+    img.src = './wonder/res/sprites/' + name + '.png';
 
     return img;
 }
