@@ -19,3 +19,5 @@ proc = { path = "res/crates/proc" }
 # wee_alloc = { version = "0.4.5", optional = true }
 
 rltk = { version = "0.8.*" }
+specs = "0.16.*"
+specs-derive = "0.4.*"

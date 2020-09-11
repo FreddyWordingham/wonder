@@ -1,4 +1,7 @@
 use rltk::{GameState, Rltk};
+use specs::prelude::*;
+use specs_derive::Component;
+use std::cmp::{max, min};
 
 struct State {}
 impl GameState for State {
