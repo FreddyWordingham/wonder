@@ -28,12 +28,17 @@
 
     <body class='fade-out'>
         <noscript>This page contains wasm and js content, please enable javascript in your browser.</noscript>
-        <div id="top_form">
+        <div id="top_form" style="display:none">
             Top Form
         </div>
         <canvas id="main_canvas"></canvas>
         <div id="bottom_form" style="display:none">
             Bottom Form
+            <table style="float:right">
+                <tr>
+                    <td><button id="time_button">pause</button></td>
+                </tr>
+            </table>
         </div>
         <script src="./bootstrap.js"></script>
         <script>
