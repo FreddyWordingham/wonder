@@ -1,3 +1,6 @@
+import {
+    draw_rect
+} from "./draw";
 // import {
 //     Universe
 // } from "wonder";
@@ -38,9 +41,10 @@ function init_canvas(id, width, height) {
 
 /// == START ==
 console.log("Hello world!");
-toggle_forms(top_form, bottom_form);
-toggle_forms(top_form, bottom_form);
 
 const canvas = init_canvas("main_canvas", 800, 800);
 console.log(canvas.width);
 console.log(canvas.height);
+
+canvas.ctx.fillStyle = "green";
+draw_rect(canvas, 0.4, 0.4, 0.2, 0.2);

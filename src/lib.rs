@@ -31,6 +31,6 @@
 pub mod game;
 pub mod meta;
 pub mod util;
-// pub mod wasm;
+pub mod wasm;
 
 pub use self::{game::*, meta::*, util::*};
