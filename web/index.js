@@ -1,6 +1,9 @@
 import {
     draw_rect
 } from "./draw";
+import {
+    render_ents
+} from "./render";
 // import {
 //     Universe
 // } from "wonder";
@@ -38,6 +41,9 @@ function init_canvas(id, width, height) {
 }
 
 
+/// -- Time --
+
+
 
 /// == START ==
 console.log("Hello world!");
@@ -48,3 +54,9 @@ console.log(canvas.height);
 
 canvas.ctx.fillStyle = "green";
 draw_rect(canvas, 0.4, 0.4, 0.2, 0.2);
+
+let state = 0;
+// const interval = setInterval(function () {
+//     // state.progress(1);
+//     render_ents(canvas, state);
+// }, 100);
