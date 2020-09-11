@@ -1,6 +1,9 @@
 //! Universe state structure.
 
-use crate::access;
+use crate::{
+    access,
+    comp::{Position, Renderable},
+};
 use rltk::{GameState, Rltk};
 use specs::{World, WorldExt};
 
@@ -17,7 +20,11 @@ impl State {
     #[inline]
     #[must_use]
     pub fn new() -> Self {
-        Self { ecs: World::new() }
+        let mut ecs = World::new();
+        ecs.register::<Position>();
+        ecs.register::<Renderable>();
+
+        Self { ecs }
     }
 }
 
