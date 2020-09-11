@@ -2,14 +2,11 @@ import {
     draw_rect
 } from "./draw";
 import {
-    render_ents
+    render
 } from "./render";
 import {
     State
 } from "wonder";
-// import {
-//     memory
-// } from "wonder/wonder_bg";
 import {
     toggle_forms
 } from "./ui";
@@ -102,7 +99,7 @@ function pause() {
 function tick() {
     console.log("*tick*");
     // state.progress(1);
-    // render_ents(canvas, state);
+    render(canvas, state);
 }
 
 
@@ -110,7 +107,7 @@ function tick() {
 /// == START ==
 console.log("Hello world!");
 
-const canvas = init_canvas("main_canvas", 800, 800);
+const canvas = init_canvas("main_canvas", 800, 500);
 console.log(canvas.width);
 console.log(canvas.height);
 
