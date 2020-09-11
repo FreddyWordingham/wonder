@@ -1,5 +1,5 @@
 //! Entities module.
 
-// pub mod dog;
+pub mod player;
 
-// pub use self::dog::*;
+pub use self::player::*;

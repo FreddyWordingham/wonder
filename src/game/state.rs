@@ -1,6 +1,6 @@
 //! Universe state structure.
 
-use crate::{access, comp::*, sys::*};
+use crate::{access, comp::*, ent::*, sys::*};
 use rltk::{GameState, Rltk};
 use specs::{Join, RunNow, World, WorldExt};
 
@@ -21,6 +21,8 @@ impl State {
         ecs.register::<Position>();
         ecs.register::<Renderable>();
         ecs.register::<LeftMover>();
+
+        ecs.register::<Player>();
 
         Self { ecs }
     }
