@@ -30,6 +30,10 @@
 
 pub mod meta;
 pub mod util;
-pub mod wasm;
+// pub mod wasm;
 
-pub use self::{meta::*, util::*, wasm::*};
+pub use self::{
+    meta::*,
+    util::*,
+    // wasm::*
+};
