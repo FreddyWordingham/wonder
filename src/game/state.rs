@@ -60,11 +60,13 @@ impl State {
         self.pos_buff.as_ptr()
     }
 
-    /// Run the core systems.
-    fn run_systems(&mut self) {
-        let mut lw = LeftWalker {};
-        lw.run_now(&self.ecs);
-        self.ecs.maintain();
+    /// Tick the state forward a number of times.
+    pub fn progress(&mut self, n: i32) {
+        for _ in 0..n {
+            let mut lw = LeftWalker {};
+            lw.run_now(&self.ecs);
+            self.ecs.maintain();
+        }
     }
 
     /// Add a player to the world.
@@ -92,7 +94,7 @@ impl GameState for State {
     #[inline]
     fn tick(&mut self, ctx: &mut Rltk) {
         player_input(self, ctx);
-        self.run_systems();
+        self.progress(1);
 
         ctx.cls();
         ctx.print(1, 1, "Hello Rust World");

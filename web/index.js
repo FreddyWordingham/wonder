@@ -84,7 +84,7 @@ function is_paused() {
 function play() {
     console.log("PLAY");
     time_button.textContent = "pause";
-    interval = setInterval(tick, 1000);
+    interval = setInterval(tick, 100);
 };
 
 /// Stop time.
@@ -98,7 +98,7 @@ function pause() {
 /// Tick forward one iteration.
 function tick() {
     console.log("*tick*");
-    // state.progress(1);
+    state.progress(1);
     render(canvas, state);
 }
 
