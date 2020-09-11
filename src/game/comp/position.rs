@@ -14,8 +14,8 @@ pub struct Position {
 }
 
 impl Position {
-    clone!(x, i32);
-    clone!(y, i32);
+    clone!(x, mut_x, i32);
+    clone!(y, mut_y, i32);
 
     /// Construct a new instance.
     #[inline]

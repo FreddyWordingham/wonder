@@ -1,6 +1,8 @@
 //! Main test function.
 
 use rltk::*;
+use specs::world::WorldExt;
+use specs::Builder;
 use wonder::comp::*;
 use wonder::State;
 
@@ -14,14 +16,35 @@ fn main() -> rltk::BError {
     let mut state = State::new();
 
     // Populate it.
-    state.add_thing(Position::new(0, 0), Renderable::new('@', YELLOW, BLACK));
+    add_player(&mut state, 40, 40);
     for i in 0..10 {
-        state.add_thing(
-            Position::new(i * 7 + 1, 20),
-            Renderable::new('☺', RED, BLACK),
-        );
+        add_monster(&mut state, 4 + i * 7, 20);
     }
 
     // Run the main logic.
     rltk::main_loop(context, state)
+}
+
+/// Add a thing to the world.
+#[inline]
+fn add_player(state: &mut State, x: i32, y: i32) {
+    state
+        .ecs_mut()
+        .create_entity()
+        .with(Position::new(x, y))
+        .with(Renderable::new('@', YELLOW, BLACK))
+        // .with(LeftMover {})
+        .build();
+}
+
+/// Add a thing to the world.
+#[inline]
+fn add_monster(state: &mut State, x: i32, y: i32) {
+    state
+        .ecs_mut()
+        .create_entity()
+        .with(Position::new(x, y))
+        .with(Renderable::new('o', RED, BLACK))
+        .with(LeftMover {})
+        .build();
 }

@@ -1,11 +1,8 @@
 //! Universe state structure.
 
-use crate::{
-    access,
-    comp::{Position, Renderable},
-};
+use crate::{access, comp::*, sys::*};
 use rltk::{GameState, Rltk};
-use specs::{Builder, Join, World, WorldExt};
+use specs::{Join, RunNow, World, WorldExt};
 
 /// Universe state information.
 pub struct State {
@@ -14,7 +11,7 @@ pub struct State {
 }
 
 impl State {
-    access!(ecs, World);
+    access!(ecs, ecs_mut, World);
 
     /// Construct a new instance.
     #[inline]
@@ -23,20 +20,25 @@ impl State {
         let mut ecs = World::new();
         ecs.register::<Position>();
         ecs.register::<Renderable>();
+        ecs.register::<LeftMover>();
 
         Self { ecs }
     }
 
-    /// Add a thing to the world.
+    /// Run the core systems.
     #[inline]
-    pub fn add_thing(&mut self, pos: Position, rend: Renderable) {
-        self.ecs.create_entity().with(pos).with(rend).build();
+    fn run_systems(&mut self) {
+        let mut lw = LeftWalker {};
+        lw.run_now(&self.ecs);
+        self.ecs.maintain();
     }
 }
 
 impl GameState for State {
     #[inline]
     fn tick(&mut self, ctx: &mut Rltk) {
+        self.run_systems();
+
         ctx.cls();
         ctx.print(1, 1, "Hello Rust World");
 
