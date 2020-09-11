@@ -4,9 +4,9 @@ import {
 import {
     render_ents
 } from "./render";
-// import {
-//     Universe
-// } from "wonder";
+import {
+    State
+} from "wonder";
 // import {
 //     memory
 // } from "wonder/wonder_bg";
@@ -117,5 +117,5 @@ console.log(canvas.height);
 canvas.ctx.fillStyle = "green";
 draw_rect(canvas, 0.4, 0.4, 0.2, 0.2);
 
-let state = 0;
+let state = State.new();
 // play();

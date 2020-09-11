@@ -21,3 +21,4 @@ wasm-bindgen = "0.2.*"
 rltk = { version = "0.8.*" }
 specs = "0.16.*"
 specs-derive = "0.4.*"
+ndarray = "0.13.*"
