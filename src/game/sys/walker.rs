@@ -14,9 +14,9 @@ impl<'a> System<'a> for LeftWalker {
     #[inline]
     fn run(&mut self, (lefty, mut pos): Self::SystemData) {
         for (_lefty, pos) in (&lefty, &mut pos).join() {
-            *pos.mut_x() -= 1;
-            if pos.x() < 0 {
-                *pos.mut_x() = 79;
+            pos.x -= 1;
+            if pos.x < 0 {
+                pos.x = 79;
             }
         }
     }

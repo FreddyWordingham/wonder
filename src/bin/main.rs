@@ -1,10 +1,8 @@
 //! Main test function.
 
 use rltk::*;
-use specs::world::WorldExt;
-use specs::Builder;
-use wonder::comp::*;
-use wonder::State;
+use specs::{Builder, WorldExt};
+use wonder::{comp::*, ent::*, State};
 
 fn main() -> rltk::BError {
     // Create rendering console.
@@ -33,7 +31,7 @@ fn add_player(state: &mut State, x: i32, y: i32) {
         .create_entity()
         .with(Position::new(x, y))
         .with(Renderable::new('@', YELLOW, BLACK))
-        // .with(LeftMover {})
+        .with(Player {})
         .build();
 }
 
