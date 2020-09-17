@@ -120,11 +120,17 @@ const canvas = init_canvas("main_canvas", num_pix_x, num_pix_y);
 var sprite = new Image();
 sprite.onload = function () {
     console.log("Loaded image.");
-    for (let i = 0; i < num_tiles_x; ++i) {
-        for (let j = 0; j < num_tiles_y; ++j) {
+    var t0 = performance.now()
+
+    for (let i = 3; i < (num_tiles_x - 3); ++i) {
+        for (let j = 3; j < (num_tiles_y - 3); ++j) {
             draw_tile(canvas, sprite, i, j);
         }
     }
+
+
+    var t1 = performance.now()
+    console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.")
 };
 sprite.src = "res/sprites/blocks_front.png";
 

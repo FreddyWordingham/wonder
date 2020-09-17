@@ -27,6 +27,5 @@ export function fill_canvas(canvas) {
 
 
 export function draw_tile(canvas, sprite, xi, yi) {
-    console.log("Tile at: ", xi, yi);
     canvas.ctx.drawImage(sprite, 0, 0, 64, 46 * 5, 64 * xi, 46 * yi, 64, 46 * 5);
 }
