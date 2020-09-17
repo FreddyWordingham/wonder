@@ -1,9 +1,9 @@
 import {
     draw_tile
 } from "./draw";
-// import {
-//     load_sprite_map
-// } from "./sprites";
+import {
+    load_sprite_map
+} from "./sprites";
 import {
     render
 } from "./render";
@@ -117,26 +117,28 @@ const num_pix_x = num_tiles_x * sprite_width;
 const num_pix_y = num_tiles_y * sprite_height;
 const canvas = init_canvas("main_canvas", num_pix_x, num_pix_y);
 
-var sprite = new Image();
-sprite.onload = function () {
-    console.log("Loaded image.");
-    var t0 = performance.now()
-
-    for (let i = 3; i < (num_tiles_x - 3); ++i) {
-        for (let j = 3; j < (num_tiles_y - 3); ++j) {
-            draw_tile(canvas, sprite, i, j);
-        }
-    }
+const sprite_map = load_sprite_map();
 
 
-    var t1 = performance.now()
-    console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.")
-};
-sprite.src = "res/sprites/blocks_front.png";
+// var sprite = new Image();
+// sprite.onload = function () {
+//     console.log("Loaded image.");
+//     var t0 = performance.now()
+
+//     for (let i = 3; i < (num_tiles_x - 3); ++i) {
+//         for (let j = 3; j < (num_tiles_y - 3); ++j) {
+//             draw_tile(canvas, sprite, i, j);
+//         }
+//     }
+
+
+//     var t1 = performance.now()
+//     console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.")
+// };
+// sprite.src = "res/sprites/blocks_front.png";
 
 
 
-// const sprite_map = load_sprite_map();
 
 // const state = State.new();
 // state.add_player(40, 40);
