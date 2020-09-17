@@ -1,9 +1,9 @@
 import {
-    draw_rect
+    draw_tile
 } from "./draw";
-import {
-    load_sprite_map
-} from "./sprites";
+// import {
+//     load_sprite_map
+// } from "./sprites";
 import {
     render
 } from "./render";
@@ -109,13 +109,33 @@ function tick() {
 
 /// == START ==
 /// -- Initialisation --
-const sprite_map = load_sprite_map();
-const canvas = init_canvas("main_canvas", 800, 500);
+const num_tiles_x = 17;
+const num_tiles_y = 21;
+const sprite_width = 64;
+const sprite_height = 46;
+const num_pix_x = num_tiles_x * sprite_width;
+const num_pix_y = num_tiles_y * sprite_height;
+const canvas = init_canvas("main_canvas", num_pix_x, num_pix_y);
 
-const state = State.new();
-state.add_player(40, 40);
-for (let i = 0; i < 10; ++i) {
-    state.add_monster(4 + i * 7, 20);
-}
+var sprite = new Image();
+sprite.onload = function () {
+    console.log("Loaded image.");
+    for (let i = 0; i < num_tiles_x; ++i) {
+        for (let j = 0; j < num_tiles_y; ++j) {
+            draw_tile(canvas, sprite, i, j);
+        }
+    }
+};
+sprite.src = "res/sprites/blocks_front.png";
 
-play();
+
+
+// const sprite_map = load_sprite_map();
+
+// const state = State.new();
+// state.add_player(40, 40);
+// for (let i = 0; i < 10; ++i) {
+//     state.add_monster(4 + i * 7, 20);
+// }
+
+// play();
