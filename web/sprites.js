@@ -19,6 +19,7 @@ export function load_ent_map() {
 
     let map = new Map();
     map['d'] = load_sprite_set("./res/sprites/dino");
+    map['*'] = load_sprite_set("./res/sprites/explode/3");
 
     console.log("Entity sprites loaded.");
 

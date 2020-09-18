@@ -29,8 +29,8 @@ export const magnification = 1;
 /// Call all the sub-rendering components.
 export function render(canvas, state, tile_map, ents_map) {
     canvas.ctx.clearRect(0, 0, canvas.width, canvas.height);
-    // render_entities(canvas, state, ents_map);
     render_tiles(canvas, state, tile_map);
+    render_entities(canvas, state, ents_map);
 }
 
 
@@ -39,7 +39,7 @@ export function render(canvas, state, tile_map, ents_map) {
 function render_tiles(canvas, state, tile_map) {
     console.log("Rendering tiles");
 
-    let tile = tile_map[' '].right;
+    let tile = tile_map[' '].front;
     for (let i = 0; i < num_tiles_x; ++i) {
         for (let j = 0; j < num_tiles_y; ++j) {
             draw_tile(canvas, tile, i, j);
@@ -48,28 +48,20 @@ function render_tiles(canvas, state, tile_map) {
 }
 
 /// Render the entities.
-// function render_tiles(canvas, state, tile_map) {
-//     console.log("Rendering tiles");
-//     // let ent_count = state.update_pos_buff();
+function render_entities(canvas, state, ents_map) {
+    let ent_count = state.update_pos_buff();
+    console.log("Rendering ", ent_count, " entites");
 
-//     const pos_ptr = state.read_pos_buff();
-//     const pos = new Int32Array(memory.buffer, pos_ptr, ent_count * 2);
+    const pos_ptr = state.read_pos_buff();
+    const pos = new Int32Array(memory.buffer, pos_ptr, ent_count * 2);
+    // const kind_ptr = state.read_kind_buff();
+    // const kind = new Int32Array(memory.buffer, kind_ptr, ent_count);
+    const kind = ['d', '*', '*', '*', '*', '*', '*', '*'];
 
-//     // for (let i = 0; i < ent_count; ++i) {
-//     //     const x = pos[2 * i];
-//     //     const y = pos[(2 * i) + 1];
-
-//     //     const fx = x / 80.0;
-//     //     const fy = y / 50.0;
-
-//     //     draw_sprite(canvas, sprite_map['p'], fx, fy, 0.05, 0.05);
-//     // }
-
-
-//     let tile = tile_map[' '].right;
-//     for (let i = 0; i < num_tiles_x; ++i) {
-//         for (let j = 0; j < num_tiles_y; ++j) {
-//             draw_tile(canvas, tile, i, j);
-//         }
-//     }
-// }
+    for (let i = 0; i < ent_count; ++i) {
+        const x = pos[2 * i];
+        const y = pos[(2 * i) + 1];
+        const k = kind[i];
+        draw_tile(canvas, ents_map[k].front, x, y);
+    }
+}

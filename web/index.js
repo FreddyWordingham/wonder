@@ -114,7 +114,7 @@ function pause() {
 function tick() {
     console.log("*tick*");
     state.progress(1);
-    render(canvas, state, tile_map);
+    render(canvas, state, tile_map, ent_map);
 }
 
 
@@ -136,4 +136,12 @@ const ent_map = load_ent_map();
 const tile_map = load_tile_map();
 
 var state = State.new();
+state.add_player(8, 1);
+state.add_monster(5, 5);
+state.add_monster(6, 8);
+state.add_monster(19, 0);
+state.add_monster(9, 2);
+state.add_monster(12, 7);
+state.add_monster(2, 6);
+state.add_monster(5, 4);
 play();
