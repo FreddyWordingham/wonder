@@ -1,11 +1,19 @@
 import {
+    clear_canvas,
     draw_tile
 } from "./draw";
 import {
-    load_sprite_map
+    load_ent_map,
+    load_tile_map
 } from "./sprites";
 import {
-    render
+    magnification,
+    num_tiles_x,
+    num_tiles_y,
+    render,
+    sprite_height,
+    sprite_ratio,
+    sprite_width
 } from "./render";
 import {
     State
@@ -18,13 +26,16 @@ import {
 
 /// == HANDLES ==
 /// -- Forms --
+/// Form above canvas.
 const top_form = document.getElementById("top_form");
+/// Form below canvas.
 const bottom_form = document.getElementById("bottom_form");
 
 
 
 /// == GLOBALS ==
 /// -- Time --
+/// Game loop handle.
 var interval = null;
 
 
@@ -42,6 +53,7 @@ time_button.addEventListener("click", event => {
 
 
 /// -- Keypress --
+/// Handle a keypress.
 document.body.onkeyup = function (e) {
     console.log("Registered keypress: ", e.keyCode);
 
@@ -87,7 +99,7 @@ function is_paused() {
 function play() {
     console.log("PLAY");
     time_button.textContent = "pause";
-    interval = setInterval(tick, 100);
+    interval = setInterval(tick, 1000);
 };
 
 /// Stop time.
@@ -102,48 +114,26 @@ function pause() {
 function tick() {
     console.log("*tick*");
     state.progress(1);
-    render(canvas, state, sprite_map);
+    render(canvas, state, tile_map);
 }
 
 
 
 /// == START ==
 /// -- Initialisation --
-const num_tiles_x = 17;
-const num_tiles_y = 21;
-const sprite_width = 64;
-const sprite_height = 46;
-const num_pix_x = num_tiles_x * sprite_width;
-const num_pix_y = num_tiles_y * sprite_height;
+/// Required horizontal canvas resolution.
+const num_pix_x = magnification * (num_tiles_x * sprite_width);
+/// Required vertical canvas resolution.
+const num_pix_y = magnification * ((num_tiles_y + (sprite_ratio - 1)) * sprite_height);
+
+
+
+
+/// -- Main --
+//  Initialise the canvas.
 const canvas = init_canvas("main_canvas", num_pix_x, num_pix_y);
+const ent_map = load_ent_map();
+const tile_map = load_tile_map();
 
-const sprite_map = load_sprite_map();
-
-
-// var sprite = new Image();
-// sprite.onload = function () {
-//     console.log("Loaded image.");
-//     var t0 = performance.now()
-
-//     for (let i = 3; i < (num_tiles_x - 3); ++i) {
-//         for (let j = 3; j < (num_tiles_y - 3); ++j) {
-//             draw_tile(canvas, sprite, i, j);
-//         }
-//     }
-
-
-//     var t1 = performance.now()
-//     console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.")
-// };
-// sprite.src = "res/sprites/blocks_front.png";
-
-
-
-
-// const state = State.new();
-// state.add_player(40, 40);
-// for (let i = 0; i < 10; ++i) {
-//     state.add_monster(4 + i * 7, 20);
-// }
-
-// play();
+var state = State.new();
+play();

@@ -1,16 +1,26 @@
 /// == FUNCTIONS ==
 /// -- Loading --
-export function load_sprite_map() {
-    console.log("Loading sprites...");
+/// Load the tile sprite map.
+export function load_tile_map() {
+    console.log("Loading tile sprites...");
 
     let map = new Map();
-    map['a'] = load_sprite_set("./res/sprites/dino");
-    map['g'] = load_sprite_set("./res/sprites/ground/0");
-    map['h'] = load_sprite_set("./res/sprites/ground/1");
-    map['j'] = load_sprite_set("./res/sprites/ground/2");
-    map['k'] = load_sprite_set("./res/sprites/ground/3");
-    map['*'] = load_sprite_set("./res/sprites/explode/1");
-    console.log("Sprites loaded.");
+    map[' '] = load_sprite_set("./res/sprites/ground/0");
+    map['w'] = load_sprite_set("./res/sprites/explode/1");
+
+    console.log("Tile sprites loaded.");
+
+    return map;
+}
+
+/// Load the entity sprite map.
+export function load_ent_map() {
+    console.log("Loading entity sprites...");
+
+    let map = new Map();
+    map['d'] = load_sprite_set("./res/sprites/dino");
+
+    console.log("Entity sprites loaded.");
 
     return map;
 }
