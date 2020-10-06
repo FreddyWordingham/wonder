@@ -6,7 +6,7 @@ export function load_tile_map() {
 
     let map = new Map();
     map[' '] = load_sprite_set("./res/sprites/ground/0");
-    map['w'] = load_sprite_set("./res/sprites/explode/1");
+    map['w'] = load_sprite_set("./res/sprites/blocks/short");
 
     console.log("Tile sprites loaded.");
 
@@ -19,7 +19,7 @@ export function load_ent_map() {
 
     let map = new Map();
     map['d'] = load_sprite_set("./res/sprites/dino");
-    map['*'] = load_sprite_set("./res/sprites/explode/3");
+    map['*'] = load_sprite_set("./res/sprites/spike/3");
 
     console.log("Entity sprites loaded.");
 
