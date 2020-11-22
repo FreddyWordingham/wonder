@@ -29,12 +29,12 @@ wee_alloc = { version = "0.4.*", optional = true }
 [dev-dependencies]
 wasm-bindgen-test = "0.3.*"
 
-[profile.release]
-opt-level = 3
-debug = false
+# [profile.release]
+# opt-level = 3
+# debug = false
 
-[package.metadata.wasm-pack.profile.release]
-wasm-opt = true
+# [package.metadata.wasm-pack.profile.release]
+# wasm-opt = true
 
 [dependencies.web-sys]
 version = "0.3"
