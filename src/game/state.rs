@@ -1,8 +1,11 @@
 //! Game state.
 
-use crate::component::{LeftWalker, Position, Renderable};
+use crate::{
+    component::{LeftWalker, Position, Renderable},
+    system::Walk,
+};
 use rltk::{GameState, Rltk, RGB};
-use specs::{Builder, Join, World, WorldExt};
+use specs::{Builder, Join, RunNow, World, WorldExt};
 
 /// Game state.
 pub struct State {
@@ -20,6 +23,15 @@ impl State {
         ecs.register::<Renderable>();
 
         Self { ecs }
+    }
+
+    /// Run the systems.
+    #[inline]
+    pub fn run_systems(&mut self) {
+        let mut walk = Walk::new();
+        walk.run_now(&self.ecs);
+
+        self.ecs.maintain();
     }
 
     /// Add an player entity.

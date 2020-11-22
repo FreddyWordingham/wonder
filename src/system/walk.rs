@@ -4,9 +4,18 @@ use crate::component::{LeftWalker, Position};
 use specs::{Join, ReadStorage, System, WriteStorage};
 
 /// Walking system.
-struct Walker {}
+pub struct Walk {}
 
-impl<'a> System<'a> for Walker {
+impl Walk {
+    /// Construct a new instance.
+    #[inline]
+    #[must_use]
+    pub const fn new() -> Self {
+        Self {}
+    }
+}
+
+impl<'a> System<'a> for Walk {
     type SystemData = (ReadStorage<'a, LeftWalker>, WriteStorage<'a, Position>);
 
     fn run(&mut self, (lefty, mut pos): Self::SystemData) {
