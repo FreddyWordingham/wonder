@@ -78,6 +78,8 @@ impl GameState for State {
     fn tick(&mut self, ctx: &mut Rltk) {
         println!("Tick!");
 
+        self.run_systems();
+
         ctx.cls();
 
         let positions = self.ecs.read_storage::<Position>();
