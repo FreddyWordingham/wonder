@@ -1,5 +1,5 @@
 //! Component module.
 
-// pub mod position;
+pub mod position;
 
-// pub use self::orc::*;
+pub use self::position::*;
