@@ -1,6 +1,6 @@
 //! Position component.
 
-use rltk::{FontCharType, RGB};
+use rltk::{to_cp437, FontCharType, RGB};
 use specs::{Component, DenseVecStorage};
 use specs_derive::Component;
 
@@ -19,7 +19,11 @@ impl Renderable {
     /// Construct a new instance.
     #[inline]
     #[must_use]
-    pub fn new(glyph: FontCharType, fg: RGB, bg: RGB) -> Self {
-        Self { glyph, fg, bg }
+    pub fn new(glyph: char, fg: RGB, bg: RGB) -> Self {
+        Self {
+            glyph: to_cp437(glyph),
+            fg,
+            bg,
+        }
     }
 }

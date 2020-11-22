@@ -30,7 +30,7 @@ impl State {
             .create_entity()
             .with(Position::new(x, y))
             .with(Renderable::new(
-                "*",
+                '*',
                 RGB::named(rltk::RED),
                 RGB::named(rltk::BLACK),
             ))
