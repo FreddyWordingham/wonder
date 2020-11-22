@@ -1,11 +1,52 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Hello wasm-pack!</title>
-  </head>
-  <body>
-    <noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
-    <script src="./bootstrap.js"></script>
-  </body>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Wonder</title>
+        <style>
+            body {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                opacity: 1;
+                transition: 1s opacity;
+            }
+
+            body.fade-out {
+                opacity: 0;
+                transition: none;
+            }
+        </style>
+    </head>
+
+    <body class='fade-out'>
+        <noscript>This page contains WASM and JS content, please enable JS in your browser.</noscript>
+        <div id="top_form">
+        </div>
+        <canvas id="main_canvas"></canvas>
+        <div id="bottom_form" style="display:none">
+            <table style="float:right">
+                <tr>
+                    <td><button id="time_button">pause</button></td>
+                    <td><button id="randomise_button">seed</button></td>
+                </tr>
+            </table>
+        </div>
+        <script src="./bootstrap.js"></script>
+        <script>
+            document.body.className -= 'fade-out';
+            window.addEventListener("load", async () => {
+                await wasm_bindgen("./myblob_bg.wasm");
+            });
+            console.log("WASM loaded.");
+        </script>
+    </body>
+
 </html>
