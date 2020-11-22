@@ -22,6 +22,21 @@ impl State {
         Self { ecs }
     }
 
+    /// Add an player entity.
+    #[inline]
+    #[must_use]
+    pub fn add_player(&mut self, x: i32, y: i32) {
+        self.ecs
+            .create_entity()
+            .with(Position::new(x, y))
+            .with(Renderable::new(
+                'O',
+                RGB::named(rltk::YELLOW),
+                RGB::named(rltk::BLACK),
+            ))
+            .build();
+    }
+
     /// Add an enemy entity.
     #[inline]
     #[must_use]

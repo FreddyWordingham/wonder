@@ -36,6 +36,7 @@ fn game() {
         .expect("Failed to build RLTK window.");
     let mut gs = State::new();
 
+    gs.add_player(40, 25);
     for i in 0..10 {
         gs.add_enemy(i * 7, 20);
     }
