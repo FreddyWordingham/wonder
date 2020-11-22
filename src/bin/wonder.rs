@@ -10,7 +10,7 @@ use arctk::{
 use std::{env::current_dir, path::PathBuf};
 
 fn main() {
-    let term_width = arctk::util::term::width().unwrap_or(80);
+    let term_width = 80;
     title(term_width, "Wonder");
 
     section(term_width, "Initialisation");
