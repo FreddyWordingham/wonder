@@ -5,9 +5,9 @@ use specs_derive::Component;
 
 /// Tendency to move left when possible.
 #[derive(Component)]
-pub struct LeftMover {}
+pub struct LeftWalker {}
 
-impl LeftMover {
+impl LeftWalker {
     /// Construct a new instance.
     #[inline]
     #[must_use]
