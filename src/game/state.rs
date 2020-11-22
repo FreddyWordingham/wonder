@@ -21,6 +21,7 @@ impl State {
         let mut ecs = World::new();
         ecs.register::<Position>();
         ecs.register::<Renderable>();
+        ecs.register::<LeftWalker>();
 
         Self { ecs }
     }

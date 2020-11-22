@@ -18,6 +18,7 @@ impl Walk {
 impl<'a> System<'a> for Walk {
     type SystemData = (ReadStorage<'a, LeftWalker>, WriteStorage<'a, Position>);
 
+    #[inline]
     fn run(&mut self, (lefty, mut pos): Self::SystemData) {
         for (_lefty, pos) in (&lefty, &mut pos).join() {
             pos.x -= 1;
