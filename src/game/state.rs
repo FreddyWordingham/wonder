@@ -1,10 +1,10 @@
 //! Game state.
 
 use crate::{
-    component::{LeftWalker, Position, Renderable},
+    component::{LeftWalker, Player, Position, Renderable},
     system::Walk,
 };
-use rltk::{GameState, Rltk, RGB};
+use rltk::{GameState, Rltk, VirtualKeyCode, RGB};
 use specs::{Builder, Join, RunNow, World, WorldExt};
 
 /// Game state.
@@ -22,6 +22,7 @@ impl State {
         ecs.register::<Position>();
         ecs.register::<Renderable>();
         ecs.register::<LeftWalker>();
+        ecs.register::<Player>();
 
         Self { ecs }
     }
@@ -46,6 +47,7 @@ impl State {
                 RGB::named(rltk::YELLOW),
                 RGB::named(rltk::BLACK),
             ))
+            .with(Player::new())
             .build();
     }
 
@@ -63,6 +65,34 @@ impl State {
             .with(LeftWalker::new())
             .build();
     }
+
+    /// Try to move the player.
+    #[inline]
+    fn try_move_player(&mut self, dx: i32, dy: i32) {
+        let mut positions = self.ecs.write_storage::<Position>();
+        let mut players = self.ecs.write_storage::<Player>();
+
+        for (_player, pos) in (&mut players, &mut positions).join() {
+            pos.x = (pos.x + dx).max(0).min(79);
+            pos.y = (pos.y + dy).max(0).min(49);
+        }
+    }
+
+    /// Handle keypresses.
+    #[inline]
+    fn handle_input(&mut self, ctx: &mut Rltk) {
+        // Player movement.
+        match ctx.key {
+            None => {}
+            Some(key) => match key {
+                VirtualKeyCode::Left => self.try_move_player(-1, 0),
+                VirtualKeyCode::Right => self.try_move_player(1, 0),
+                VirtualKeyCode::Up => self.try_move_player(0, 1),
+                VirtualKeyCode::Down => self.try_move_player(0, -1),
+                _ => {}
+            },
+        }
+    }
 }
 
 impl Default for State {
@@ -78,6 +108,7 @@ impl GameState for State {
     fn tick(&mut self, ctx: &mut Rltk) {
         println!("Tick!");
 
+        self.handle_input(ctx);
         self.run_systems();
 
         ctx.cls();
