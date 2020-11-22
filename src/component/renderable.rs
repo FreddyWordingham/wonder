@@ -1,14 +1,14 @@
 //! Position component.
 
-use rltk::RGB;
+use rltk::{FontCharType, RGB};
 use specs::{Component, DenseVecStorage};
 use specs_derive::Component;
 
 /// Rendering data.
 #[derive(Component)]
-struct Renderable {
+pub struct Renderable {
     /// Character.
-    glyph: rltk::FontCharType,
+    glyph: FontCharType,
     /// Character colour.
     fg: RGB,
     /// Background colour.
