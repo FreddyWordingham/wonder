@@ -1,8 +1,8 @@
 //! Game state.
 
 use crate::component::{Position, Renderable};
-use rltk::{GameState, Rltk};
-use specs::{World, WorldExt};
+use rltk::{GameState, Rltk, RGB};
+use specs::{Builder, World, WorldExt};
 
 /// Game state.
 pub struct State {
@@ -20,6 +20,21 @@ impl State {
         ecs.register::<Renderable>();
 
         Self { ecs }
+    }
+
+    /// Add an enemy entity.
+    #[inline]
+    #[must_use]
+    pub fn add_enemy(&mut self, x: i32, y: i32) {
+        self.ecs
+            .create_entity()
+            .with(Position::new(x, y))
+            .with(Renderable::new(
+                "*",
+                RGB::named(rltk::RED),
+                RGB::named(rltk::BLACK),
+            ))
+            .build();
     }
 }
 
