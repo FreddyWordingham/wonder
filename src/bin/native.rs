@@ -7,7 +7,9 @@ use arctk::{
         dir,
     },
 };
+use rltk::{main_loop, RltkBuilder};
 use std::{env::current_dir, path::PathBuf};
+use wonder::game::State;
 
 fn main() {
     let term_width = 80;
@@ -21,7 +23,17 @@ fn main() {
         .expect("Failed to initialise directories.");
 
     section(term_width, "Running");
-    // Game code.
+    game();
 
     section(term_width, "Finished");
+}
+
+/// Run the main game loop.
+fn game() {
+    let context = RltkBuilder::simple80x50()
+        .with_title("Roguelike Tutorial")
+        .build()
+        .expect("Failed to build RLTK window.");
+    let gs = State::new();
+    main_loop(context, gs).expect("Failed to run the main game loop.")
 }
