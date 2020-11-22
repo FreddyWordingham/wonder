@@ -1,6 +1,6 @@
 //! Game state.
 
-use crate::component::{Position, Renderable};
+use crate::component::{LeftWalker, Position, Renderable};
 use rltk::{GameState, Rltk, RGB};
 use specs::{Builder, Join, World, WorldExt};
 
@@ -47,6 +47,7 @@ impl State {
                 RGB::named(rltk::RED),
                 RGB::named(rltk::BLACK),
             ))
+            .with(LeftWalker::new())
             .build();
     }
 }
