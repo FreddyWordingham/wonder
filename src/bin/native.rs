@@ -31,7 +31,7 @@ fn main() {
 /// Run the main game loop.
 fn game() {
     let context = RltkBuilder::simple80x50()
-        .with_title("Roguelike Tutorial")
+        .with_title("Roguelike - Wonder")
         .build()
         .expect("Failed to build RLTK window.");
     let gs = State::new();
