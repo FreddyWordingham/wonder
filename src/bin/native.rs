@@ -34,6 +34,11 @@ fn game() {
         .with_title("Roguelike - Wonder")
         .build()
         .expect("Failed to build RLTK window.");
-    let gs = State::new();
+    let mut gs = State::new();
+
+    for i in 0..10 {
+        gs.add_enemy(i * 7, 20);
+    }
+
     main_loop(context, gs).expect("Failed to run the main game loop.")
 }
