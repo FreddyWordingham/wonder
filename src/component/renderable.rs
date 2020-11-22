@@ -8,11 +8,11 @@ use specs_derive::Component;
 #[derive(Component)]
 pub struct Renderable {
     /// Character.
-    glyph: FontCharType,
+    pub glyph: FontCharType,
     /// Character colour.
-    fg: RGB,
+    pub fg: RGB,
     /// Background colour.
-    bg: RGB,
+    pub bg: RGB,
 }
 
 impl Renderable {

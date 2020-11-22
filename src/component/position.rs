@@ -7,9 +7,9 @@ use specs_derive::Component;
 #[derive(Component)]
 pub struct Position {
     /// Horizontal component.
-    x: i32,
+    pub x: i32,
     /// Vertical component.
-    y: i32,
+    pub y: i32,
 }
 
 impl Position {

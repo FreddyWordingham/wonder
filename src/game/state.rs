@@ -2,7 +2,7 @@
 
 use crate::component::{Position, Renderable};
 use rltk::{GameState, Rltk, RGB};
-use specs::{Builder, World, WorldExt};
+use specs::{Builder, Join, World, WorldExt};
 
 /// Game state.
 pub struct State {
@@ -24,7 +24,6 @@ impl State {
 
     /// Add an player entity.
     #[inline]
-    #[must_use]
     pub fn add_player(&mut self, x: i32, y: i32) {
         self.ecs
             .create_entity()
@@ -39,7 +38,6 @@ impl State {
 
     /// Add an enemy entity.
     #[inline]
-    #[must_use]
     pub fn add_enemy(&mut self, x: i32, y: i32) {
         self.ecs
             .create_entity()
@@ -62,7 +60,15 @@ impl Default for State {
 impl GameState for State {
     #[inline]
     fn tick(&mut self, ctx: &mut Rltk) {
+        println!("Tick!");
+
         ctx.cls();
-        ctx.print(1, 1, "Hello Rust World");
+
+        let positions = self.ecs.read_storage::<Position>();
+        let renderables = self.ecs.read_storage::<Renderable>();
+
+        for (pos, render) in (&positions, &renderables).join() {
+            ctx.set(pos.x, pos.y, render.fg, render.bg, render.glyph);
+        }
     }
 }
