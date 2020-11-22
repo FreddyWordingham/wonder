@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="utf-8">
-        <title>wonder</title>
+        <title>Wonder</title>
         <style>
             body {
                 position: absolute;
@@ -27,22 +27,25 @@
     </head>
 
     <body class='fade-out'>
-        <noscript>This page contains wasm and js content, please enable javascript in your browser.</noscript>
-        <div id="top_form" style="display:none">
-            Top Form
+        <noscript>This page contains WASM and JS content, please enable JS in your browser.</noscript>
+        <div id="top_form">
         </div>
         <canvas id="main_canvas"></canvas>
         <div id="bottom_form" style="display:none">
-            Bottom Form
             <table style="float:right">
                 <tr>
                     <td><button id="time_button">pause</button></td>
+                    <td><button id="randomise_button">seed</button></td>
                 </tr>
             </table>
         </div>
         <script src="./bootstrap.js"></script>
         <script>
             document.body.className -= 'fade-out';
+            window.addEventListener("load", async () => {
+                await wasm_bindgen("./myblob_bg.wasm");
+            });
+            console.log("WASM loaded.");
         </script>
     </body>
 
