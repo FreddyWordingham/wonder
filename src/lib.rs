@@ -29,6 +29,6 @@
     clippy::unwrap_used
 )]
 
-pub mod entity;
 pub mod component;
+pub mod entity;
 pub mod game;

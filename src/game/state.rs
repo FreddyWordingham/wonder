@@ -52,6 +52,8 @@ impl State {
 }
 
 impl Default for State {
+    #[inline]
+    #[must_use]
     fn default() -> Self {
         Self::new()
     }
