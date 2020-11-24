@@ -12,25 +12,26 @@ edition = "2018"
 documentation = "https://freddywordingham.github.io/wonder"
 exclude = ["docs/"]
 
-[lib]
-crate-type = ["cdylib", "rlib"]
+# [lib]
+# crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-arctk-attr = "0.2.*"
-arctk-proc = "0.3.*"
-arctk = { version="0.12.*" }
+arctk-attr = { path = "../arctk-attr" }
+arctk-proc = { path = "../arctk-proc" }
+arctk = { path = "../arctk", features = ["rltk", "specs", "specs-derive"] }
 rltk = "0.8.*"
 specs = "0.16.*"
 specs-derive = "0.4.*"
+serde = { version = "1.0.*", features = ["derive"] }
 
-console_error_panic_hook = { version = "0.1.*", optional = true }
-js-sys = "0.3.*"
-ndarray = "0.13.*"
-wasm-bindgen = "0.2.*"
-wee_alloc = { version = "0.4.*", optional = true }
+# console_error_panic_hook = { version = "0.1.*", optional = true }
+# js-sys = "0.3.*"
+# ndarray = "0.13.*"
+# wasm-bindgen = "0.2.*"
+# wee_alloc = { version = "0.4.*", optional = true }
 
-[dev-dependencies]
-wasm-bindgen-test = "0.3.*"
+# [dev-dependencies]
+# wasm-bindgen-test = "0.3.*"
 
 # [profile.release]
 # opt-level = 3
@@ -39,6 +40,6 @@ wasm-bindgen-test = "0.3.*"
 # [package.metadata.wasm-pack.profile.release]
 # wasm-opt = true
 
-[dependencies.web-sys]
-version = "0.3"
-features = ["console"]
+# [dependencies.web-sys]
+# version = "0.3"
+# features = ["console"]

@@ -1,0 +1,33 @@
+{
+    "name": "wonder",
+    "version": "0.1.0",
+    "description": "Console based RPG using Rust and WASM",
+    "main": "index.js",
+    "scripts": {
+        "build": "webpack --config webpack.config.js",
+        "start": "webpack-dev-server",
+        "deploy": "gh-pages -d dist"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/FreddyWordingham/wonder.git"
+    },
+    "keywords": [
+        "webassembly",
+        "wasm",
+        "rust",
+        "webpack"
+    ],
+    "author": "Freddy Wordingham <fjmw201@exeter.ac.uk>",
+    "homepage": "https://github.com/FreddyWordingham/wonder",
+    "dependencies": {
+        "wonder": "file:./wasm"
+    },
+    "devDependencies": {
+        "copy-webpack-plugin": "^5.0.0",
+        "hello-wasm-pack": "^0.1.0",
+        "webpack": "^4.29.3",
+        "webpack-cli": "^3.1.0",
+        "webpack-dev-server": "^3.1.5"
+    }
+}
