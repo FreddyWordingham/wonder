@@ -14,7 +14,7 @@ fn main() -> rltk::BError {
 
     // Map generation.
     let map = cartographer::forest(&mut rng);
-    let map = cartographer::caves(&mut rng);
+    // let map = cartographer::caves(&mut rng);
 
     let spawn = map.player_spawn;
     let mut gs = State::new(map);
