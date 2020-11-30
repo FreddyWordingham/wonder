@@ -21,9 +21,9 @@ fn main() -> rltk::BError {
 
     // Add entities.
     gs.add_player(spawn.x, spawn.y);
-    for i in 0..10 {
-        gs.add_enemy(i as i32 * 3, (2 * height as i32) / 3);
-    }
+    // for i in 0..10 {
+    //     gs.add_enemy(i as i32 * 3, (2 * height as i32) / 3);
+    // }
 
     // Run the main loop.
     main_loop(context, gs)

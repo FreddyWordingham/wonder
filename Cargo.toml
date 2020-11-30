@@ -21,7 +21,7 @@ exclude = ["docs/"]
 # arctk = { path = "../arctk", features = ["rltk", "specs", "specs-derive"] }
 arctk-attr = "0.2.*"
 arctk-proc = "0.3.*"
-arctk = "0.12.*"
+arctk = { version = "0.12.*", features = ["rltk", "specs", "specs-derive"] }
 rltk = "0.8.*"
 specs = "0.16.*"
 specs-derive = "0.4.*"
