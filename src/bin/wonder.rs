@@ -4,7 +4,7 @@ use rltk::{main_loop, RandomNumberGenerator, RltkBuilder};
 fn main() -> rltk::BError {
     // Rendering window.
     let width = 128;
-    let height = 128;
+    let height = 64;
     let context = RltkBuilder::simple(width, height)?
         .with_title("Roguelike - Wonder")
         .build()?;
