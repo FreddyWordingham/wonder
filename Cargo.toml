@@ -16,9 +16,12 @@ exclude = ["docs/"]
 # crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-arctk-attr = { path = "../arctk-attr" }
-arctk-proc = { path = "../arctk-proc" }
-arctk = { path = "../arctk", features = ["rltk", "specs", "specs-derive"] }
+# arctk-attr = { path = "../arctk-attr" }
+# arctk-proc = { path = "../arctk-proc" }
+# arctk = { path = "../arctk", features = ["rltk", "specs", "specs-derive"] }
+arctk-attr = "0.2.*"
+arctk-proc = "0.3.*"
+arctk = "0.12.*"
 rltk = "0.8.*"
 specs = "0.16.*"
 specs-derive = "0.4.*"
